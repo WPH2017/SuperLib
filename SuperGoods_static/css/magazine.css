@@ -1,0 +1,93 @@
+.content{
+    overflow: hidden;
+}
+.content p.ti{
+    margin:30px 0;
+    text-align: center;
+    font:bold 50px/50px Microsoft Yahei;
+}
+.content p small{
+    font-size:30px;
+}
+.content .nav{
+    width: 100%;
+    border-bottom:1px solid #eee;
+    overflow: hidden;
+}
+.content .nav li{
+    float: left;
+}
+.content .nav li a{
+    display: block;
+    width: 70px;
+    height: 30px;
+    line-height:20px;
+    text-align: center;
+}
+.mag-box{
+    margin-bottom:20px;
+    overflow: hidden;
+}
+.pager{
+    font-size: 12px;
+    text-align: right;
+}
+.pager a{
+    display: inline-block;
+    width: 24px;
+    margin:4px;
+    text-align: center;
+    background-color: #eee;
+}
+.pager button{
+    width: 50px;
+    height: 20px;
+    color: #fff;
+    background-color: #7fa6c5;
+    outline:0;
+    border: 0;
+    cursor: pointer;
+}
+#pager-head{
+    background-color: #2751d7;
+}
+.pager input{
+    width: 26px;
+}
+.pager-as{
+    position: relative;
+    display: inline-block;
+    max-width: 320px;
+    overflow: hidden;
+    margin-bottom:-8px;
+}
+.pager-move{
+    display: block;
+    position: relative;
+    top: 0;
+}
+.magbox{
+    float:left;
+    margin:25px 23px 0 0;
+    width: 318px;
+    text-align: center;
+}
+.mag-box div.magbox:nth-child(3n){
+    margin:25px 0 0 0;
+}
+.magbox img{
+    width: 318px;
+    height: 190px;
+}
+.magbox p{
+    margin: 0;
+    padding: 0 20px;
+    height:20px;
+    font-size:14px;
+    line-height:20px;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+.magbox .goto{
+
+}
