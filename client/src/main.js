@@ -6,6 +6,12 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+import axios from 'axios'
+import vueAxios from 'vue-axios'
+
+Vue.use(vueAxios,axios)
+// axios.default.baseURL = apiConfig.baseUrl
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

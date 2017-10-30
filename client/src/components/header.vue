@@ -2,18 +2,18 @@
   <div>
     <div class="header-box">
       <div class="header">
-        <a href="index.html"><i class="logo"></i></a>
+        <a href="index"><i class="logo"></i></a>
         <div class="h-nav">
           <ul>
-            <li class="login"><a href="./mobilelogin">登录 </a>&nbsp;&nbsp;<a href="./register">注册</a></li>
+            <li class="login"><a href="./login">登录 </a>&nbsp;&nbsp;<a href="./register">注册</a></li>
             <li class="line"></li>
             <li class="sub cart-list"><a href="cart">购物车</a>
               <div class="subnav subnav1">
                 <div class="card1 card-cart">
                   <!--你的购物车暂时没有商品...-->
                   <!--<div class="card-cart-item" data-id="${data.goods_id}">-->
-                  <!--<a href="detail.html?id=${data.goods_id}"><img src="${data.goods_thumb}" alt=""></a>-->
-                  <!--<a href="detail.html?id=${data.goods_id}">${data.goods_name}</a><br>-->
+                  <!--<a href="detail?id=${data.goods_id}"><img src="${data.goods_thumb}" alt=""></a>-->
+                  <!--<a href="detail?id=${data.goods_id}">${data.goods_name}</a><br>-->
                   <!--数量：${data.goods_number}件<span class="card-amount">￥${data.goods_number*data.goods_price}</span>-->
                   <!--</div>-->
                 </div>
@@ -36,14 +36,14 @@
               </div>
             </li>
             <li class="line"></li>
-            <li class="add"><a href="addGoods.html">添加良品</a></li>
+            <li class="add"><a href="addGoods">添加良品</a></li>
           </ul>
         </div>
         <div class="c-nav">
           <ul>
-            <li class="none"><a href="index.html">首页</a></li>
+            <li class="none"><a href="index">首页</a></li>
             <li>
-              <a href="shop.html">商店</a>
+              <a href="shop">商店</a>
               <div class="subbox">
                 <div class="list">
                   <table>
@@ -78,22 +78,22 @@
                   </table>
                   <p><a href="javascript:">查看所有品牌>></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:">最新到货>></a></p>
                 </div>
-                <div class="magazine">
+                <div class="magzine">
                   <a href="javascript:void(0)">
-                    <img src="/static/img/magazine.jpg" alt="">
+                    <img src="/static/img/magzine.jpg" alt="">
                     <span>新视线：2015年7月刊</span>
                   </a>
                 </div>
               </div>
             </li>
-            <li id="magazine">
-              <a href="magazine.html">杂志</a>
+            <li id="magzine">
+              <a href="magzine">杂志</a>
               <div class="subbox para">
                 <!--<a href="">趣物</a>-->
               </div>
             </li>
             <li id="share">
-              <a href="share.html">分享</a>
+              <a href="share">分享</a>
               <div class="subbox para">
                 <!--<a href="">趣物</a>-->
               </div>

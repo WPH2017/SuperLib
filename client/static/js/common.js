@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 //1. 回到顶部
 var backTopIt=function () {
     $('#backBtn').click(function () {
@@ -87,13 +85,13 @@ var searchIt=function () {
 
     search.bind("searchTextInput",function (){
         var text=search.val();
-        location.href="search_result.html?wrd="+encodeURIComponent(text);
+        location.href="search_result?wrd="+encodeURIComponent(text);
     });
 };
 
 //4. 数据初始化
 var dataInit=function () {
-//4.1 magazine类别导航链接导入
+//4.1 magzine类别导航链接导入
     $.ajax({
         "url":"http://h6.duchengjiu.top/shop/api_cat.php",
         "type":"GET",
@@ -101,7 +99,7 @@ var dataInit=function () {
             $(json.data).each(function () {
                 var name=$(this)[0].cat_name;
                 var tid=$(this)[0].cat_id;
-                $("#magazine .subbox").append('<a href="magazine.html?cat_id='+tid +'">'+name+'</a>');
+                $("#magzine .subbox").append('<a href="magzine?cat_id='+tid +'">'+name+'</a>');
             });
         }
     });
@@ -123,10 +121,10 @@ var dataInit=function () {
 var loginIt=function () {
     if(localStorage.getItem("token")){
         var loginbar=$('.login');
-        loginbar.html("<a href='javascript:' class='user'><img src='./img/"+localStorage.getItem('avatar')+"' alt='' class='user-icon'>"+ localStorage.getItem("username") +"</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:' class='cancle'>退出登录</a>");
+        loginbar.html("<a href='javascript:' class='user'><img src='/static/img/"+localStorage.getItem('avatar')+"' alt='' class='user-icon'>"+ localStorage.getItem("username") +"</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:' class='cancle'>退出登录</a>");
         $('.cancle').click(function(){
             localStorage.clear();
-            loginbar.html("<a href=\"./mobilelogin.html\">登录 </a>&nbsp;&nbsp;<a href=\"register.html\">注册</a>");
+            loginbar.html("<a href=\"./mobilelogin\">登录 </a>&nbsp;&nbsp;<a href=\"register\">注册</a>");
             location.reload();
         });
     }
@@ -141,17 +139,16 @@ var cartCheckIt=function () {
             "token":localStorage.getItem("token")
         },
         "success":function (response) {
-            console.log(response)
             var json=response.data;
             var html='';
             if(response.code!==0){
                 $('.card-cart').html('你的购物车暂时没有商品...');
                 $('.card2').html('快去抢购良仓商品吧！');
-                $('.card2').parent().attr('href','index.html');
+                $('.card2').parent().attr('href','index');
                 return;
             }
             $('.card2').html('查看我的购物车');
-            $('.card2').parent().attr('href','cart.html');
+            $('.card2').parent().attr('href','cart');
             $('.cart-list>a').html(function(){
                 var sum=0;
                 for(var i=0;i<json.length;i++){
@@ -162,11 +159,11 @@ var cartCheckIt=function () {
             $('.cart-list>a em').css({'color':'blue','font-size':'16px','font-style':'normal'});
             for(var i=0;i<json.length;i++){
                 //! 此处应该加入购物车显示数量的限制
-                data=json[i];
+                var data=json[i];
                 html+=`
         <div class="card-cart-item" data-id="${data.goods_id}">
-            <a href="detail.html?cat_id=${data.cat_id}&goods_id=${data.goods_id}"><img src="${data.goods_thumb}" alt=""></a>
-            <p><a href="detail.html?cat_id=${data.cat_id}&goods_id=${data.goods_id}">${data.goods_name}</a></p>
+            <a href="detail?cat_id=${data.cat_id}&goods_id=${data.goods_id}"><img src="${data.goods_thumb}" alt=""></a>
+            <p><a href="detail?cat_id=${data.cat_id}&goods_id=${data.goods_id}">${data.goods_name}</a></p>
             数量：${data.goods_number}件<span class="card-amount">￥${data.goods_number*data.goods_price}</span>
         </div>
     `;
@@ -201,6 +198,7 @@ var trShowOrHide=function () {
 };
 
 var init=function () {
+  backTopIt();
   ceilingIt();
   searchIt();
   dataInit();
@@ -208,7 +206,6 @@ var init=function () {
   cartCheckIt();
   trShowOrHide();
 };
-init.back=backTopIt;
 
 export default init
 
