@@ -47,6 +47,7 @@
       //     return $1;
       // });
 
+      //2. 购物业务绑定
       //首先，查找商品详情
       //查到后查询购物车信息
       //查到购物信息后绑定添加事件
@@ -60,7 +61,6 @@
             var html = "<a href='index'>良仓</a> > <a href='magzine?cat_id=" + valueJson.cat_id + "'>" + JSON.parse(localStorage.getItem("magzineClassList"))[valueJson.cat_id] + "</a> > " + data.goods_name;
             return html;
           });
-
 
 //          var html=``;
 //          $('.img-detail',$goods).html(html);
@@ -85,7 +85,8 @@
                               <button class="minus">-</button>
                               <input type="text" value="1" id="d-goods-number">
                               <button class="add">+</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                              <small>库存: ${data.goods_number} 件 *此处讲道理是0，不要问我为什么~</small>
+                              <small>库存: ${data.goods_number} 件 </small>
+                              <!--<em>*库存讲道理是0，不要问我为什么~</em>-->
                           </p>
                           <p>
                               <span></span>
@@ -120,14 +121,10 @@
           });
 
 
-
 //          $(".result").html("");
 //          $(".result").append($('<img src="'+data.goods_thumb+'"/><p>'+data.goods_name+'</p><p>'
 //            +data.goods_desc+'</p>' +'</p><p>价格：'+data.price+'元</p>'
 //            +'</p><p>数量：</p>'));
-
-          //保存当前处理的商品
-          localStorage.setItem("now_goods", data.goods_id);
 
           //查到商品详情后，从购物车api中读取该商品的已选数量
           $.ajax({
@@ -140,14 +137,21 @@
               var data = response.data;
               localStorage.setItem('goods_number', 0);
               for (var i = 0; i < data.length; i++) {
-                if (data[i]['goods_id'] === localStorage.getItem('now_goods')) {
+                if (data[i]['goods_id'] === $('#add-to-cart').attr('data-goods-id')) {
                   localStorage.setItem('goods_number', data[i]['goods_number']);
+                  input.val(data[i]['goods_number']);
                   break;
                 }
               }
 
+              let flag=true;
               //查到购物车中该商品信息之后，再绑定添加到购物车
               $('#add-to-cart').click(function () {
+                if(!flag){
+                  alert('稍等，还在交换数据');
+                }else{
+                  flag=false;
+                }
                 if (!localStorage.getItem("token")) {
                   alert("您还未登录请在跳转的页面进行登录操作！");
                   location.href = "login#callback=" + location.href;
@@ -155,10 +159,10 @@
                 }
 
                 var goods_id = $(this).attr('data-goods-id');
-                var num = 1 * input.val();
+                localStorage.setItem('goods_number',Math.max(1*input.val(),1*localStorage.getItem('goods_number')*1+1));
 
                 //提交购物信息
-                var num = 1 * (input.val() || localStorage.getItem('goods_number'));
+                var num = 1 * localStorage.getItem('goods_number');
                 $.ajax({
                   "type": "POST",
                   "url": "http://h6.duchengjiu.top/shop/api_cart.php?token=" + localStorage.getItem('token'),
@@ -167,7 +171,14 @@
                     "number": num,
                   },
                   "success": function (response) {
-                    localStorage.setItem('goods_number', num)
+                    localStorage.setItem('goods_number', num);
+                    console.log(num)
+                    input.val(num);
+                    var html=$('.sub.cart-list>a em').html();
+                    $('.sub.cart-list>a em').html(html.replace(/(\d+)件/,function ($,$1) {
+                      flag=true;
+                      return 1*$1+1+'件';
+                    }));
                   }
                 })
               })
@@ -179,13 +190,13 @@
                   return;
                 }
                 //提交购物信息
-                var num = 1 * localStorage.getItem('goods_number');
+                var num = 1 * (input.val() || localStorage.getItem('goods_number'));
                 num = num ? num : 1;
                 $.ajax({
                   "type": "POST",
                   "url": "http://h6.duchengjiu.top/shop/api_cart.php?token=" + localStorage.getItem('token'),
                   "data": {
-                    "goods_id": localStorage.getItem("now_goods"),
+                    "goods_id": 1*$('#add-to-cart').attr('data-goods-id'),
                     "number": num,
                   },
                   "success": function (response) {
@@ -210,6 +221,7 @@
     margin-bottom: 20px;
     font-size: 12px;
     color: #878787;
+    text-align: left;
   }
 
   .left {
@@ -217,76 +229,79 @@
     width: 730px;
 
   }
+
   .picChange {
     float: left;
     width: 350px;
   }
+
   .right {
     float: right;
   }
+
   .content {
     overflow: hidden;
   }
 
-  .result{
-    margin-top:30px;
+  .result {
+    margin-top: 30px;
     margin-bottom: 30px;
     float: left;
-    .img-detail{
+    .img-detail {
       float: left;
       width: 40%;
-      &>img{
+      & > img {
         width: 100%;
       }
-      .sm-img{
-        margin-top:10px;
+      .sm-img {
+        margin-top: 10px;
         padding: 0 10px;
-        &>img{
+        & > img {
           float: left;
-          margin-right:10px;
+          margin-right: 10px;
           width: calc(17%);
-          &:last-of-type{
-            margin-right:0;
+          &:last-of-type {
+            margin-right: 0;
           }
         }
       }
     }
   }
 
-  .goods-content{
+  .goods-content {
     float: right;
     width: 56%;
     padding-left: 10px;
     text-align: left;
-    h4{
+    h4 {
       font-size: 20px;
       font-weight: 900;
-      &>small{
+      & > small {
         color: #f58787;
-        font-weight:bold;
+        font-weight: bold;
       }
     }
-    p{
-      margin:21px 0;
-      span{
+    p {
+      margin: 21px 0;
+      span {
         display: inline-block;
         width: 60px;
       }
-      &:nth-of-type(2) em{
-        font-size:26px;
-        font-weight:900;
+      &:nth-of-type(2) em {
+        font-size: 26px;
+        font-weight: 900;
       }
-      &:nth-of-type(4){
-        input[type="text"]{
+      &:nth-of-type(4) {
+        input[type="text"] {
           width: 40px;
           height: 30px;
-          padding:0;
+          padding: 0;
           text-align: center;
           border: none;
           /*border: 1px solid #ccc;*/
           /*outline: none;*/
         }
-        button{
+        button {
           width: 40px;
           height: 30px;
           box-shadow: 0 0 2px 1px #eee;
@@ -295,58 +310,60 @@
           border: 1px solid #000;
           font-size: 18px;
           color: #000;
-          &:hover{
+          &:hover {
             background: #000;
             color: #fff;
           }
         }
       }
-      &:nth-of-type(6){
-        a{
-          i{
+      &:nth-of-type(6) {
+        a {
+          i {
             color: #666;
-            font-size:18px;
-            margin-right:10px;
+            font-size: 18px;
+            margin-right: 10px;
             transition: all .3s;
           }
-          &:hover i{
+          &:hover i {
             color: #000;
           }
         }
       }
     }
-    button{
+    button {
       border: none;
       outline: none;
+      &:hover{
+        cursor: pointer;
+      }
     }
-    button#pay-it-rightnow{
+    button#pay-it-rightnow {
       width: calc(36%);
       height: 40px;
-      line-height:1;
-      border:1px solid #000;
+      line-height: 1;
+      border: 1px solid #000;
       color: #000;
       background: #fff;
       transition: all .3s;
-      &:hover{
+      &:hover {
         color: #fff;
         background: #000;
       }
     }
-    button#add-to-cart{
+    button#add-to-cart {
       width: calc(36%);
       height: 40px;
-      line-height:1;
+      line-height: 1;
       color: #fff;
       background: #000;
       transition: all .3s;
-      &:hover{
+      &:hover {
         box-shadow: 0 1px 1px 1px #ccc;
       }
     }
   }
 
-
-/*todo:待刪除*/
+  /*todo:待刪除*/
   .buyit, .addit, .shareit {
     display: inline-block;
     margin-top: 10px;

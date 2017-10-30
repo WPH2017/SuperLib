@@ -46,7 +46,7 @@
           <p> <a href="javascript:void(0)" rel="">关于良仓</a>&nbsp; | &nbsp;<a href="javascript:void(0)" rel="">服务协议</a>&nbsp; | &nbsp;<a href="javascript:void(0)"rel="">隐私保护政策</a>&nbsp; | &nbsp;<a href="javascript:void(0)" rel="">使用指南</a>&nbsp; | &nbsp;<a href="javascript:void(0)" rel="">联系我们</a>&nbsp; | &nbsp;<a href="javascript:void(0)" rel="">加入我们</a>&nbsp; | &nbsp;<a href="javascript:void(0)" rel="">友情链接</a>&nbsp; | &nbsp;<a href="javascript:void(0)">私信良仓</a></p>
         </div>
         <div class="copyright">
-          <p><span class="numLeFont">©</span>&nbsp;2013-2015 北京良仓文化传播有限公司版权所有&nbsp;京<span class="numLeFont">ICP</span>备<span class="numLeFont">13010677</span>号<span class="numLeFont">-1</span>&nbsp;京公网安备<span class="numLeFont">11010502025627</span></p>
+          <p><span class="numLeFont">©</span>&nbsp;2013-2015 北京良仓文化传播有限公司版权所有< 项目仅为模仿 >&nbsp;京<span class="numLeFont">ICP</span>备<span class="numLeFont">13010677</span>号<span class="numLeFont">-1</span>&nbsp;京公网安备<span class="numLeFont">11010502025627</span></p>
           <p>&nbsp;&nbsp;公司名称：北京良仓文化传播有限公司&nbsp;&nbsp;电话：010-58263516</p>
           <p>&nbsp;&nbsp;公司地址：北京朝阳区百子湾路32号6号楼1层60号.</p>
           <p>&nbsp;&nbsp;社会信用统一代码：91110105059231575L&nbsp;&nbsp;食品许可证：JY11105160159557&nbsp;&nbsp;</p>

@@ -47,7 +47,7 @@
         <div class="summary">
           <p>良品总价 / <span class="number">￥0.00</span></p>
           <br><button class="submit">立即结算</button>
-          <br><a href="index.html" class="continue"> 继续购物 </a>
+          <br><a href="index" class="continue"> 继续购物 </a>
         </div>
       </div>
     </div>

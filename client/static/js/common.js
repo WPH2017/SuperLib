@@ -85,7 +85,7 @@ var searchIt=function () {
 
     search.bind("searchTextInput",function (){
         var text=search.val();
-        location.href="search_result?wrd="+encodeURIComponent(text);
+        location.href="search?wrd="+encodeURIComponent(text);
     });
 };
 

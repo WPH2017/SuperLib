@@ -367,7 +367,7 @@
   .new-cancle{
     position: absolute;
     top:0;
-    right:80px;
+    right:14px;
     width: 14px;
     height: 14px;
     line-height:14px;
@@ -435,6 +435,7 @@
   .cart-item{
     overflow: hidden;
     border-bottom:1px solid #ccc;
+    text-align: left;
   }
   .cart-item img{
     display: block;
@@ -455,11 +456,15 @@
     width:600px;
   }
 
+  .notice{
+    text-align: left;
+  }
   .notice input[type=text]{
     margin-left:-40px;
     width: 350px;
   }
   .voucher{
+    text-align: left;
     margin:20px 0;
     line-height:30px;
   }
@@ -488,7 +493,7 @@
   /*}*/
   .settleway{
     text-align: center;
-    line-height: 50px;
+    line-height: 60px;
   }
   .settleway span{
     display: inline;
@@ -500,6 +505,15 @@
     font-size:12px;
     color: #0B71A2;
   }
+  .settleway input[type='radio']{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+  }
+  .settleway img{
+    width: 50px;
+  }
+
   .order-confirm{
     display: inline-block;
     margin-top: 5px;

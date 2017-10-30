@@ -36,14 +36,14 @@
               </div>
             </li>
             <li class="line"></li>
-            <li class="add"><a href="addGoods">添加良品</a></li>
+            <li class="add"><a href="javascript:">添加良品</a></li>
           </ul>
         </div>
         <div class="c-nav">
           <ul>
             <li class="none"><a href="index">首页</a></li>
             <li>
-              <a href="shop">商店</a>
+              <a href="javascript:">商店</a>
               <div class="subbox">
                 <div class="list">
                   <table>
@@ -93,7 +93,7 @@
               </div>
             </li>
             <li id="share">
-              <a href="share">分享</a>
+              <a href="javascript:">分享</a>
               <div class="subbox para">
                 <!--<a href="">趣物</a>-->
               </div>

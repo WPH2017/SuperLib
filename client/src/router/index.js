@@ -8,6 +8,7 @@ import Detail from '@/views/detail'
 import Cart from '@/views/cart'
 import Settle from '@/views/settle'
 import Order from '@/views/order'
+import Search from '@/views/search'
 
 Vue.use(Router)
 
@@ -49,15 +50,16 @@ export default new Router({
       path: '/magzine',
       component: Magzine
     },
-    // {
-    //   path: '/search'
-    // },
+    {
+      path: '/search',
+      component: Search
+    },
     {
       path: '/cart',
       component: Cart
     },
     {
-      path: '/settl',
+      path: '/settle',
       component: Settle
     },
     {

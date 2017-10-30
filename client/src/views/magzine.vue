@@ -208,7 +208,12 @@
     width: 70px;
     height: 30px;
     line-height:20px;
+    font-size: 16px;
     text-align: center;
+    transition: color .3s;
+  }
+  .content .nav li a:hover{
+    color: #000;
   }
   .mag-box{
     margin-bottom:20px;
