@@ -47,7 +47,10 @@ var searchIt=function () {
 
     //移入移出显隐逻辑
     var showORhide= function () {
-        function show(color="#ddd") {
+        function show(color) {
+            if(!!!color){
+              color = "#ddd";
+            }
             search.parent().stop(true);
             search.parent().css({"border-bottom-color":color}).animate({"right":0},300);
         }
@@ -161,12 +164,12 @@ var cartCheckIt=function () {
                 //! 此处应该加入购物车显示数量的限制
                 var data=json[i];
                 html+=`
-        <div class="card-cart-item" data-id="${data.goods_id}">
-            <a href="detail?cat_id=${data.cat_id}&goods_id=${data.goods_id}"><img src="${data.goods_thumb}" alt=""></a>
-            <p><a href="detail?cat_id=${data.cat_id}&goods_id=${data.goods_id}">${data.goods_name}</a></p>
-            数量：${data.goods_number}件<span class="card-amount">￥${data.goods_number*data.goods_price}</span>
-        </div>
-    `;
+                        <div class="card-cart-item" data-id="${data.goods_id}">
+                            <a href="detail?cat_id=${data.cat_id}&goods_id=${data.goods_id}"><img src="${data.goods_thumb}" alt=""></a>
+                            <p><a href="detail?cat_id=${data.cat_id}&goods_id=${data.goods_id}">${data.goods_name}</a></p>
+                            数量：${data.goods_number}件<span class="card-amount">￥${data.goods_number*data.goods_price}</span>
+                        </div>
+                      `;
             }
             $('.card-cart').append(html);
         }
